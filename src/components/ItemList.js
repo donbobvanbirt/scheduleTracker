@@ -23,7 +23,6 @@ const ItemList = React.createClass({
       case "title":
         newItems[index][name] = title.value;
         edit(newItems);
-        console.log("editing title");
       break;
       case "start":
         newItems[index][name] = start.value;
@@ -46,13 +45,9 @@ const ItemList = React.createClass({
     const { items, edit, removeItem } = this.props;
     const { editing } = this.state;
 
-    console.log("items:", items);
-
     let sortedItems = items.sort((a, b) => {
       return a.end.replace(/-/g, "") - b.end.replace(/-/g, "");
     })
-
-    console.log("sortedItems", sortedItems);
 
     let tableBody = items.map((item, index) => {
       if (item.id === this.state.editing) {

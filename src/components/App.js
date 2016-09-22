@@ -14,13 +14,13 @@ const App = React.createClass({
 
     this.setState({
       items: [...items, item]
-    }, console.log("item", item));
+    });
   },
 
   edit(newState) {
     this.setState({
       items: newState
-    }, () => console.log("editing state"))
+    })
   },
 
   removeItem(id) {
