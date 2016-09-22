@@ -15,7 +15,7 @@ const ItemForm = React.createClass({
       submitted: moment().format('MMM Do, h:mm a'),
       id: uuid()
     };
-
+    
     // let newTitle = titleInput.value;
     // let newStart = startTime.value;
     // let newEnd = endTime.value;

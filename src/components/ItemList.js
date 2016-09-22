@@ -48,6 +48,12 @@ const ItemList = React.createClass({
 
     console.log("items:", items);
 
+    let sortedItems = items.sort((a, b) => {
+      return a.end.replace(/-/g, "") - b.end.replace(/-/g, "");
+    })
+
+    console.log("sortedItems", sortedItems);
+
     let tableBody = items.map((item, index) => {
       if (item.id === this.state.editing) {
         return (
@@ -73,7 +79,7 @@ const ItemList = React.createClass({
             <td>{item.start}</td>
             <td>{item.end}</td>
             <td>{item.submitted}</td>
-            <td><button onClick={() => {this.editItem(item.id)}} className="btn btn-sm btn-success"><i className="fa fa-edit"></i></button></td>
+            <td><button onClick={() => {this.editItem(item.id)}} className="btn btn-sm btn-default"><i className="fa fa-edit"></i></button></td>
             <td><button onClick={removeItem.bind(null, item.id)}  className="btn btn-sm btn-danger"><i className="fa fa-trash"></i></button></td>
           </tr>
         )
