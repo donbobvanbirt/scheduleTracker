@@ -12,20 +12,16 @@ const ItemForm = React.createClass({
       title: titleInput.value,
       start: startTime.value,
       end: endTime.value,
-      submitted: moment().format('MMM Do, h:mm a'),
+      submitted: moment().format('YYYY-MM-DD'),
       id: uuid()
     };
-    
-    // let newTitle = titleInput.value;
-    // let newStart = startTime.value;
-    // let newEnd = endTime.value;
 
     titleInput.value = '';
-
+    startTime.value = '';
+    endTime.value = '';
     titleInput.focus();
-    // console.log('submitForm working');
+
     this.props.newItem(item);
-    // this.props.newItem(newTitle);
   },
 
   render() {
@@ -33,7 +29,7 @@ const ItemForm = React.createClass({
       <form onSubmit={this.submitForm}>
         <div className="form-group">
 
-          <input ref="titleInput" type="text" className="form-control" />
+          <input ref="titleInput" type="text" className="form-control" required/>
           <label>Title</label>
           <input ref="startTime" type="date" className="form-control" />
           <label>Start</label>

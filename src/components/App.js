@@ -29,6 +29,23 @@ const App = React.createClass({
     this.edit(newItems);
   },
 
+  componentWillMount() {
+    const serializedData = localStorage.savedState;
+    let savedState;
+
+    try {
+      savedState = JSON.parse(serializedData);
+      this.setState(savedState);
+    } catch(err) {
+      console.log('Local Storage ERROR');
+    }
+  },
+
+  componentWillUpdate(nextProps, nextState) {
+    const serializedData = JSON.stringify(nextState);
+    localStorage.savedState = serializedData;
+  },
+
   render() {
     const { items } = this.state;
     return (
